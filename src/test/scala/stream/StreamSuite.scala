@@ -12,10 +12,11 @@ import com.trueaccord.scalapb.GeneratedMessageCompanion
 @RunWith(classOf[JUnitRunner])
 class StreamSuite extends FunSuite{
   test("Read a gam file") {
+    val testGamFile="/Users/aregier/coursera/parallel/graph_sv_genotyper/src/test/resources/test.gam"
     def printAlignment(alignmentMessage: Alignment) = {
-      println(alignmentMessage.name)
+      println(alignmentMessage.toString)
     }
     val s = new ProtobufStream[Alignment]
-    s.allRecordsFromFile("/Users/aregier/coursera/parallel/graph_sv_genotyper/src/test/resources/test.gam")(printAlignment)
+    s.allRecordsFromFile(testGamFile)(printAlignment)
   }
 }
