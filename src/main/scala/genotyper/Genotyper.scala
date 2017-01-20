@@ -11,8 +11,10 @@ package object genotyper {
     }
 
     def getNodePairs(path: Option[Seq[Mapping]]): GenSeq[((Option[Long], Option[Long]), Int)] = path match{
-      case Some(s) => (for (i <- 0 to s.length - 2) yield ((s(i).position.map(_.nodeId),
+      case Some(s) => (for (i <- 0 to s.length - 2) yield (
+        (s(i).position.map(_.nodeId),
         s(i+1).position.map(_.nodeId)), 1))
+      case None => GenSeq()
     }
 
     def getGenotypes(edgeCounts: GenMap[(Option[Long], Option[Long]), Int]): GenMap[Option[Long], Genotype] = {
